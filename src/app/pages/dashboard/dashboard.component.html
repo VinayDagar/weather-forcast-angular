@@ -1,0 +1,89 @@
+
+
+<mat-toolbar>
+    <span>MetaWeather API </span>
+    <span class="example-spacer"></span>
+    <mat-form-field class="example-form-field">
+        <mat-label>Search Location</mat-label>
+        <input matInput (search)="searchForLocation()" type="search" [(ngModel)]="search">
+        <button mat-button *ngIf="search" matSuffix mat-icon-button aria-label="Clear" (click)="search=''">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+    <div (click)="logout()" class="btn btn-primary ml-3">Logout</div>
+</mat-toolbar>
+<!-- <div class="d-flex justify-content-center align-items-center" *ngIf="isLoading"> -->
+    <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+<!-- </div> -->
+
+<div class="container center-align my-3">
+
+    <div class="d-flex justify-content-between" *ngIf="weatherDetails">
+        <div class="d-flex flex-column">
+            <div class="container-fluid">
+                Location: {{weatherDetails.title}}
+            </div>
+            <div class="container-fluid">
+                Sun Rise: {{weatherDetails.sunRise | date : 'mediumTime'}}
+            </div>
+            <div class="container-fluid">
+                Sun Set: {{weatherDetails.sunSet | date : 'mediumTime'}}
+            </div>
+        </div>
+        <div (click)="getWeatherForcast()" class="btn btn-primary mt-3 center-align">Refresh List</div>
+
+    </div>
+
+    <table mat-table [dataSource]="weatherData" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef> Date </th>
+            <td mat-cell *matCellDef="let element, let i = index;"> {{element.applicable_date }} {{ i === 0 ? ' -
+                (Today)' : ''}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.weather_state_name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="icon">
+            <th mat-header-cell *matHeaderCellDef> </th>
+            <td mat-cell *matCellDef="let element">
+                <img class="img-fluid"
+                    src="https://www.metaweather.com/static/img/weather/png/{{element.weather_state_abbr}}.png" alt=""
+                    srcset="">
+            </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="min_temp">
+            <th mat-header-cell *matHeaderCellDef> Min. Temp </th>
+            <td mat-cell *matCellDef="let element"> {{element.min_temp | number : '2.2'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="max_temp">
+            <th mat-header-cell *matHeaderCellDef> Max. Temp </th>
+            <td mat-cell *matCellDef="let element"> {{element.max_temp | number : '2.2'}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="humidity">
+            <th mat-header-cell *matHeaderCellDef> Humid </th>
+            <td mat-cell *matCellDef="let element"> {{element.humidity | number : '2.2'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="visibility">
+            <th mat-header-cell *matHeaderCellDef> Visibility </th>
+            <td mat-cell *matCellDef="let element"> {{element.visibility | number : '2.2'}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

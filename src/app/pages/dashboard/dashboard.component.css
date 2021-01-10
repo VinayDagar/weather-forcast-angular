@@ -1,0 +1,16 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  .mat-toolbar-row, .mat-toolbar-single-row {
+    height: 90px;
+}
+table {
+  width: 100%;
+}
+.img-fluid {
+  max-width: 36px;
+  height: auto;
+}
+.btn.btn-primary.mt-3.center-align {
+  height: 40px;
+}

@@ -1,0 +1,24 @@
+.d-flex.justify-content-center.align-items-center {
+    background: #7b1fa2;
+    height: 100%;
+}
+
+.mat-form-field {
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    width: 100%;
+}
+.container {
+    width: 40%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+button.submit-button.mat-focus-indicator.mat-button.mat-button-base {
+    color: white;
+    border: 2px solid;
+    border-radius: 10em;
+    padding: 0px 30px;
+}

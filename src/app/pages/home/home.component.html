@@ -1,0 +1,44 @@
+<mat-toolbar color="primary">
+    <span>Weather Forcast</span>
+    <span class="example-spacer"></span>
+    <button (click)="navigateToLogin()" mat-button>Login</button>
+
+</mat-toolbar>
+<div class="my-3 d-flex justify-content-center align-items-center">
+    <mat-card class="example-card">
+        <mat-card-header>
+            <mat-card-title>Meta Weather</mat-card-title>
+            <mat-card-subtitle>Open-source weather forcast API </mat-card-subtitle>
+        </mat-card-header>
+        <img class="card-image" mat-card-image src="https://www.metaweather.com/static/img/weather/png/lc.png"
+            alt="Meta Weather ICON">
+        <mat-card-content>
+            <p>
+                The MetaWeather is an Open-Source weather forcasting API, which also give us the access to weather
+                specific images
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <a href="https://www.metaweather.com/api/" target="__blank">
+                <button mat-button>Link</button>
+            </a>
+            <!-- <button mat-button>SHARE</button> -->
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+<footer class="page-footer font-small unique-color pt-4">
+    <div class="container">
+        <ul class="list-unstyled list-inline text-center py-2">
+            <li class="list-inline-item">
+                <h5 class="mb-1">Login and see the Broadcast</h5>
+            </li>
+            <li class="list-inline-item">
+                <button (click)="navigateToLogin()"  class="rounded" mat-button>Login</button>
+            </li>
+        </ul>
+    </div>
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <!-- <a href="https://mdbootstrap.com/"> MDBootstrap.com</a> -->
+    </div>
+</footer>
